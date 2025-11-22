@@ -1,34 +1,63 @@
-# Analysis of Success Patterns in the Global Video Game Market
+# Global Video Game Market Strategy: Success Pattern Analysis for Ice Store
 
-## Business Objective
+## Executive Summary
 
-This project was developed for the online store **Ice** to conduct a strategic analysis of the global video game market.
+This project was developed for the online retailer **Ice** to conduct a deep, strategic analysis of the global video game market. The primary objective was to move beyond conventional sales reporting and utilize advanced data analysis, including **statistical hypothesis testing**, to isolate the definitive factors driving game sales and platform longevity.
 
-The main goal is to **identify key success patterns** (platform, genre, region, score) that will allow the company to:
+The resulting insights directly enable the company to:
 
-1.  **Detect promising projects** with high sales potential.
-2.  **Plan and optimize advertising campaigns** for 2017, maximizing Return on Investment (ROI).
+1.  **Identify High-Potential Projects:** Accurately detect promising games and platforms for investment.
+2.  **Optimize 2017 Advertising Strategy:** Develop highly localized and effective advertising campaigns, maximizing Return on Investment (ROI) based on validated market preferences.
 
-## ✨ Key Results and Impact
+-----
 
-A **robust Exploratory Data Analysis (EDA)** was executed, focusing on the current period, and statistical techniques were applied to validate critical market hypotheses:
+## Methodology and Statistical Validation
 
-* **Identification of Vital Platforms:** Platforms with the **longest lifespan** and the **highest revenue volume** in the recent period (starting from 2013) were determined, enabling the company to focus advertising investment on the ecosystems with the most traction.
-* **Geographic Segmentation:** The **top five most popular genres and platforms per region (NA, EU, JP)** were identified, revealing unique preferences for a localized marketing strategy.
-* **Statistical Validation (Hypothesis Testing):** **Student's t-tests** were applied to confirm whether user and critic scores had a significantly different impact on sales, providing an empirical basis for the weight to be given to reviews in advertising campaigns.
+A robust **Exploratory Data Analysis (EDA)** was executed on historical sales data, strictly filtered to a **relevant analysis period (2013 onwards)** to prevent basing future predictions on obsolete platform cycles.
 
-## 🛠️ Technologies and Stack
+### Key Analytical Steps:
+
+  * **Vital Platform Identification:** Determined platforms with the **longest active lifespan** and the **highest cumulative revenue volume** in the recent period, focusing investment on the most vital ecosystems.
+  * **Geographic Demand Segmentation:** Identified the top five most successful genres and platforms for three major markets (**North America (NA), Europe (EU), and Japan (JP)**), which is critical for formulating localized marketing strategies tailored to unique regional preferences.
+  * **Critical Data Handling:** Implemented a strategy for handling missing review scores, including **`NaN` and `'tbd'` (to be determined)** values, by converting them to nulls to ensure the integrity of subsequent mean calculations and statistical tests.
+
+### Hypothesis Testing (Statistical Validation):
+
+**Student's t-tests** were applied to provide empirical validation on the influence of consumer sentiment (reviews) on sales:
+
+| Hypothesis Test | Null Hypothesis ($H_0$) | Key Finding |
+| :--- | :--- | :--- |
+| **User Score Impact** | User scores **do not** have a statistically significant correlation with game sales. | *Result of the t-test* |
+| **Critic Score Impact** | Critic scores **do not** have a statistically significant correlation with game sales. | *Result of the t-test* |
+
+This statistical framework provides an empirical basis for the weight to be given to user versus critic reviews in promotional efforts.
+
+-----
+
+## Technology Stack
 
 | Category | Tool | Specific Use |
 | :--- | :--- | :--- |
-| **Language** | `Python` | Data analysis, cleaning, and modeling. |
-| **Manipulation** | `Pandas`, `NumPy` | Preprocessing, handling missing values, and matrix calculations. |
-| **Visualization** | `Matplotlib` | Creation of data distribution charts (histograms, boxplots) for decision-making. |
-| **Statistics** | `SciPy` | Application of statistical hypothesis testing (Student's t-test) to validate assumptions. |
-| **Environment** | `Jupyter Notebook` | Documentation of the workflow and presentation of results. |
+| **Language** | `Python` | Core environment for data analysis and execution. |
+| **Manipulation** | `Pandas`, `NumPy` | Data wrangling, feature engineering, and high-performance matrix operations. |
+| **Statistics** | `SciPy` | Application of inferential statistical techniques (Student's t-test) to validate business assumptions. |
+| **Visualization** | `Matplotlib`, `Seaborn` | Creation of data distribution charts (histograms, boxplots) to support decision-making. |
+| **Environment** | `Jupyter Notebook` | Documentation of the analytical workflow and presentation of findings. |
 
-## 💡 Code Highlights
+-----
 
-* **Critical Missing Data Handling:** A strategy was implemented for handling `NaN` values and the string `'tbd'` (to be determined) in user scores, converting them to null values to allow for the calculation of means and the application of statistical analysis without bias.
-* **Strategic Time Filtering:** The dataset was defined and filtered to a **relevant analysis period** (starting from 2013), which is crucial for not basing 2017 predictions on outdated platform data.
-* **Solid Hypothesis Testing:** The `scipy.stats.ttest_ind` function was implemented with the parameter `equal_val=False` (unequal variances) to perform hypothesis tests with greater precision, a key technique for the robustness of the analysis.
+## Code & Analysis Highlights
+
+  * **Strategic Time Filtering:** The dataset was intelligently pruned to the 2013-onwards period, crucial for building a prediction model relevant to the contemporary market landscape.
+  * **Robust Hypothesis Testing:** Implemented the `scipy.stats.ttest_ind` function with the parameter `equal_val=False` (unequal variances assumed) to ensure the highest possible precision in the statistical validation of score impacts on sales.
+  * **Platform Lifecycle Analysis:** Detailed time-series analysis was performed to identify the platform's **"peak sales year"** and **"end-of-life"** period, providing foresight for investment timing.
+
+-----
+
+## How to Run the Project
+
+1.  **Install Python dependencies:**
+    ```bash
+    pip install pandas numpy scipy matplotlib seaborn jupyter
+    ```
+2.  **Execute the Notebook:** Open and run the `video_game.ipynb` file in a Jupyter or JupyterLab environment to replicate the entire analysis and conclusions.
